@@ -1,0 +1,26 @@
+# Gradle / Android
+.gradle/
+build/
+local.properties
+/launcher/captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
+
+# IDE
+.idea/
+*.iml
+.kotlin/
+
+# Secrets
+.env
+.env.*
+
+# Third-party wallpapers (videos and images) stay local: they live on the SHIELD, not in git
+assets/*.mp4
+assets/wallpaper-*
+
+# OS
+.DS_Store
+Thumbs.db

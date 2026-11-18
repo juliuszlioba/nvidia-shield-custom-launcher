@@ -1,0 +1,9 @@
+# Normalise text to LF in the repo; keep script line endings correct per platform.
+* text=auto
+gradlew text eol=lf
+*.bat text eol=crlf
+
+# Binaries
+*.jar binary
+*.png binary
+*.ttf binary

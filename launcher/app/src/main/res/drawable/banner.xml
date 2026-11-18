@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 16:9 TV banner: a quiet row of five tiles, the middle one selected -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="320dp"
+    android:height="180dp"
+    android:viewportWidth="320"
+    android:viewportHeight="180">
+    <path android:fillColor="#FF040A1E" android:pathData="M0,0h320v180h-320z" />
+    <path android:fillColor="#33EEF0F6" android:pathData="M40,80h40v24h-40z" />
+    <path android:fillColor="#33EEF0F6" android:pathData="M88,80h40v24h-40z" />
+    <path android:fillColor="#E6EEF0F6" android:pathData="M136,74h48v30h-48z" />
+    <path android:fillColor="#33EEF0F6" android:pathData="M192,80h40v24h-40z" />
+    <path android:fillColor="#33EEF0F6" android:pathData="M240,80h40v24h-40z" />
+    <path android:fillColor="#E6EEF0F6" android:pathData="M150,116h20v3h-20z" />
+</vector>

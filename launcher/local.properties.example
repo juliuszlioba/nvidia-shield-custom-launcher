@@ -1,0 +1,6 @@
+# Copy to local.properties (git-ignored) and fill in.
+sdk.dir=C\:/Users/<you>/AppData/Local/Android/Sdk
+
+# Production Supabase of the moviesNight project (same values as moviesnight-android-tv-app).
+supabase.url=https://<project-ref>.supabase.co
+supabase.key=<publishable key>
