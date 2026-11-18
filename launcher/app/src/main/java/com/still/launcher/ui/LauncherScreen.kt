@@ -256,18 +256,18 @@ private fun LauncherContent(state: LauncherState, active: Boolean, homeSignal: I
                 .graphicsLayer { translationX = parallax * unitPx },
         )
         // brightness(.7) and the soft shades from the mockup
-        Box(Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.3f)))
+        Box(Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.1f)))
         Box(
             Modifier.fillMaxSize().background(
-                Brush.verticalGradient(0f to Palette.Shade.copy(alpha = 0.45f), 0.22f to Palette.Shade.copy(alpha = 0f)),
+                Brush.verticalGradient(0f to Palette.Shade.copy(alpha = 0.3f), 0.22f to Palette.Shade.copy(alpha = 0f)),
             ),
         )
         Box(
             Modifier.fillMaxSize().background(
                 Brush.verticalGradient(
-                    0.4f to Palette.Shade.copy(alpha = 0f),
-                    0.7f to Palette.Shade.copy(alpha = 0.6f),
-                    1f to Palette.Shade.copy(alpha = 0.94f),
+                    0.5f to Palette.Shade.copy(alpha = 0f),
+                    0.75f to Palette.Shade.copy(alpha = 0.4f),
+                    1f to Palette.Shade.copy(alpha = 0.8f),
                 ),
             ),
         )
