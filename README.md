@@ -168,3 +168,7 @@ builds just open on their home screen.
 
 [MIT](LICENSE) for the code in this repository. Bundled third-party files keep their own
 licenses (see `licenses/`).
+
+## Acknowledgments
+
+This app was built with the help of AI coding tools. I used [T3 Code](https://t3.codes/) as my main application throughout development. AI made it possible to bring this dream project to life in almost no time, even though I have very little knowledge of Android development.
