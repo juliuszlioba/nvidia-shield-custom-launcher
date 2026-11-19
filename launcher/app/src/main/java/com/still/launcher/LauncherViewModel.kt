@@ -15,6 +15,8 @@ import com.still.launcher.data.WallpaperOption
 import com.still.launcher.data.WallpaperSource
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -59,10 +61,21 @@ class LauncherViewModel(app: Application) : AndroidViewModel(app) {
         }
     }
 
+    private var wallpaperJob: Job? = null
+
     fun refreshWallpaper() {
-        viewModelScope.launch {
+        wallpaperJob?.cancel()
+        wallpaperJob = viewModelScope.launch {
             // show what's already indexed straight away, then index new files and look again
             loadWallpapers()
+            // Right after a reboot the launcher starts before shared storage is mounted, so Pictures
+            // looks empty. Keep looking (about a minute in all) until it's there.
+            var wait = 1_000L
+            while ((!WallpaperSource.storageReady() || _state.value.wallpapers.isEmpty()) && wait <= 32_000) {
+                delay(wait)
+                loadWallpapers()
+                wait *= 2
+            }
             WallpaperSource.indexPictures(getApplication())
             loadWallpapers()
             makeThumbnails()

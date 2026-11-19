@@ -44,6 +44,9 @@ object WallpaperSource {
 
     private val pictures: File get() = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
 
+    /** False for a few seconds after boot: the launcher starts before shared storage is mounted. */
+    fun storageReady(): Boolean = Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED
+
     fun list(): List<WallpaperOption> =
         pictures.listFiles()
             ?.mapNotNull { dir -> FOLDER.matchEntire(dir.name)?.let { dir to it.groupValues[1].toInt() } }
