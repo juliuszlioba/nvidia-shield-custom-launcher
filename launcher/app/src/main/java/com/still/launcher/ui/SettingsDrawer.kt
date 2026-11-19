@@ -3,6 +3,7 @@ package com.still.launcher.ui
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -32,7 +33,9 @@ import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -47,7 +50,7 @@ import kotlin.math.roundToInt
 /** A line in the settings drawer: a wallpaper to choose, or an action. */
 sealed interface DrawerItem {
     data class Wall(val option: WallpaperOption) : DrawerItem
-    data class Action(val label: String, val note: String? = null, val run: () -> Unit) : DrawerItem
+    data class Action(val label: String, val icon: ImageVector, val note: String? = null, val run: () -> Unit) : DrawerItem
 }
 
 // Layout of the drawer in mockup pixels; fixed heights so the list can scroll to the focused line.
@@ -228,7 +231,14 @@ private fun ActionRow(item: DrawerItem.Action, focused: Boolean) {
             .background(rowBackground(focused))
             .padding(horizontal = px(22)),
         verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(px(18)),
     ) {
+        Image(
+            item.icon,
+            contentDescription = null,
+            colorFilter = ColorFilter.tint(Palette.Ink.copy(alpha = if (focused) 0.9f else 0.5f)),
+            modifier = Modifier.size(px(26)),
+        )
         BasicText(
             item.label,
             style = drawerText(24, FontWeight.Normal, Palette.Ink.copy(alpha = if (focused) 1f else 0.78f)),

@@ -40,14 +40,20 @@ class MainActivity : ComponentActivity() {
         val actions = LauncherActions(
             launchApp = { LauncherApps.launch(this, it.packageName) },
             openRecord = { LauncherApps.openMoviesNightRecord(this, it) },
+            // The stock launcher's "Your apps" grid, else the Apps list in Settings
+            openAllApps = {
+                open(
+                    Intent().setClassName("com.google.android.tvlauncher", "com.google.android.tvlauncher.appsview.AppsViewActivity"),
+                    Intent(Intent.ACTION_ALL_APPS),
+                    Intent(Settings.ACTION_APPLICATION_SETTINGS),
+                )
+            },
             selectWallpaper = { viewModel.selectWallpaper(it) },
             openNetwork = { open(Intent(Settings.ACTION_WIFI_SETTINGS), Intent(Settings.ACTION_WIRELESS_SETTINGS)) },
             // SystemUI's "dream now" activity starts the chosen screensaver (Ambient Mode)
             startScreensaver = { open(Intent().setClassName("com.android.systemui", "com.android.systemui.Somnambulator")) },
             // On the SHIELD this TV Settings screen puts the device to sleep straight away
             sleep = { open(Intent().setClassName("com.android.tv.settings", "com.android.tv.settings.system.PowerSettingsActivity")) },
-            // Apps can't restart the device themselves; About has the Restart entry
-            restart = { open(Intent(Settings.ACTION_DEVICE_INFO_SETTINGS)) },
             openSystemSettings = { open(Intent(Settings.ACTION_SETTINGS)) },
         )
 

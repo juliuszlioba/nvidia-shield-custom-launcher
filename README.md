@@ -26,8 +26,8 @@ moviesNight TV app. The last card, "More on moviesNight", opens the app itself.
 
 **Settings drawer.** The faint gear next to the clock slides in a drawer from the right:
 
-- **System:** Wi-Fi & network, Screensaver (starts Ambient Mode now), Sleep, Restart and
-  System settings.
+- **System:** All apps (see [Known limitations](#known-limitations)), Screensaver (starts
+  Ambient Mode now), Sleep, Wi-Fi & network and System settings.
 - **Wallpaper:** every `Pictures/live-wallpaper-N` folder on the SHIELD, with a thumbnail
   and a tidied file name. The choice is remembered.
 
@@ -142,9 +142,9 @@ builds just open on their home screen.
 
 ## Known limitations
 
-- **Restart** opens Settings → About, where Reboot is listed. Ordinary apps aren't allowed
-  to restart the device, and the device-owner workaround needs a device with no Google
-  account.
+- **All apps** opens the stock Android TV launcher's "Your apps" grid. If that launcher is
+  disabled, it opens whichever app handles "all apps" (Projectivy's All apps panel, when
+  it's installed), and failing that, the Apps list in Settings.
 - **Sleep** opens TV Settings' `PowerSettingsActivity`, which puts the SHIELD to sleep
   straight away. Other Android TV devices may behave differently.
 - **The remote's ≡ (Menu) button** is taken by the system on the SHIELD before apps see it,

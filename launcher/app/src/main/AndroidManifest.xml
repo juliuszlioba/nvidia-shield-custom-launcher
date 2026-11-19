@@ -23,7 +23,8 @@
         <package android:name="com.crunchyroll.crunchyroid" />
         <package android:name="com.moviesnight.tv" />
         <package android:name="tv.twitch.android.app" />
-        <!-- drawer actions: network/about/sleep screens and the screensaver starter -->
+        <!-- drawer actions: all apps, network/sleep screens and the screensaver starter -->
+        <package android:name="com.google.android.tvlauncher" />
         <package android:name="com.android.tv.settings" />
         <package android:name="com.android.systemui" />
     </queries>

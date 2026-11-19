@@ -96,11 +96,11 @@ import kotlin.math.roundToInt
 class LauncherActions(
     val launchApp: (LauncherApp) -> Unit,
     val openRecord: (Long) -> Unit,
+    val openAllApps: () -> Unit,
     val selectWallpaper: (WallpaperOption) -> Unit,
     val openNetwork: () -> Unit,
     val startScreensaver: () -> Unit,
     val sleep: () -> Unit,
-    val restart: () -> Unit,
     val openSystemSettings: () -> Unit,
 )
 
@@ -157,11 +157,11 @@ private fun LauncherContent(state: LauncherState, active: Boolean, homeSignal: I
     // ---------- Settings drawer: system actions, then wallpapers ----------
     val drawerItems: List<DrawerItem> = remember(state.wallpapers, actions) {
         listOf<DrawerItem>(
-            DrawerItem.Action("Wi-Fi & network", run = actions.openNetwork),
-            DrawerItem.Action("Screensaver", run = actions.startScreensaver),
-            DrawerItem.Action("Sleep", run = actions.sleep),
-            DrawerItem.Action("Restart", note = "About → Reboot", run = actions.restart),
-            DrawerItem.Action("System settings", run = actions.openSystemSettings),
+            DrawerItem.Action("All apps", DrawerIcons.Apps, run = actions.openAllApps),
+            DrawerItem.Action("Screensaver", DrawerIcons.Screensaver, run = actions.startScreensaver),
+            DrawerItem.Action("Sleep", DrawerIcons.Sleep, run = actions.sleep),
+            DrawerItem.Action("Wi-Fi & network", DrawerIcons.Wifi, run = actions.openNetwork),
+            DrawerItem.Action("System settings", Icons.Outlined.Settings, run = actions.openSystemSettings),
         ) + state.wallpapers.map { DrawerItem.Wall(it) }
     }
     val diSafe = di.coerceIn(0, (drawerItems.size - 1).coerceAtLeast(0))
